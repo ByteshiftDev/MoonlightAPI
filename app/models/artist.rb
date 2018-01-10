@@ -1,4 +1,5 @@
 class Artist < ApplicationRecord
+  belongs_to :beacon
   has_many :artworks
   has_attached_file :avatar,
     :styles => {

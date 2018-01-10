@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :notifications
+  resources :beacons
   resources :artworks
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   resources :artists

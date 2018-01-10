@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171206213510) do
+ActiveRecord::Schema.define(version: 20180110201721) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20171206213510) do
     t.boolean "featured"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "beacon_id"
   end
 
   create_table "artworks", force: :cascade do |t|
@@ -36,6 +37,19 @@ ActiveRecord::Schema.define(version: 20171206213510) do
     t.datetime "photo_updated_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "beacons", force: :cascade do |t|
+    t.string "uuid"
+    t.integer "major"
+    t.integer "minor"
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.string "title"
+    t.string "body"
+    t.string "subtitle"
+    t.integer "beacon_id"
   end
 
 end
