@@ -8,6 +8,18 @@ class ArtworksController < ApplicationController
     render json: @artworks
   end
 
+  def search
+    query = params[:query]
+    if Artwork.search(query) != []
+      @artwork = Artwork.search(query)
+      render json: @artwork
+    else
+      render status: 404, json: {
+        message: "No artworks with artist id #{query}"
+      }
+    end
+  end
+
   # GET /artworks/1
   def show
     render json: @artwork
