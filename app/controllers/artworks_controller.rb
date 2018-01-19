@@ -9,9 +9,9 @@ class ArtworksController < ApplicationController
   end
 
   def search
-    query = params[:query]
-    if Artwork.search(query) != []
-      @artwork = Artwork.search(query)
+    query = params[:artist_id]
+    if Artwork.search(query.to_i) != []
+      @artwork = Artwork.search(query.to_i)
       render json: @artwork
     else
       render status: 404, json: {

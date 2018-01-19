@@ -9,7 +9,6 @@ class Artwork < ApplicationRecord
   attr_accessor :delete_photo
   before_validation { self.photo.clear if self.delete_photo == '1' }
 
-  scope :search, -> (input) do
-    Artwork.where(artist_id: "#{input}")
-  end
+  scope :search, -> (input) { where("artist_id = ?", "#{input}") }
+
 end
